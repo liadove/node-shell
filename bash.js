@@ -1,15 +1,19 @@
-process.stdout.write('promt> ');
+const pwd = require('./pwd')
+const ls = require('./ls')
 
-process.stdin.on('data', (data) =>{
-  const cmd= data.toString().trim();
 
-  if(cmd==='pwd')
-  {
-    process.stdout.write(process.cwd());
+process.stdin.on('data', (data) => {
+
+  process.stdout.write("prompt >")
+  const cmd = data.toString().trim();
+  switch (cmd) {
+    case 'pwd':
+      pwd()
+      break;
+    case 'ls':
+      ls()
+      break;
   }
-  else{
-  process.stdout.write('You typed: ' + cmd);
-  }
-  process.stdout.write('\npromt > ');
-})
+  process.stdout.write("\n prompt > ")
+}
 
